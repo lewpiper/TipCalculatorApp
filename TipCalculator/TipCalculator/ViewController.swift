@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
+import CoreLocation
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //Creating IBOutlets to connect up my UI with my code.
@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet var taxPctSlider : UISlider!
     @IBOutlet var taxPctLabel : UILabel!
     @IBOutlet var resultsTextView :UITextView!
+              var location: CLLocationManager!
     
     
     //Connecting Outlets to a functions that need to be run.
@@ -39,6 +40,11 @@ class ViewController: UIViewController {
     
     @IBAction func viewTapped(sender : AnyObject) {
     
+    }
+    
+    
+    func locationManager(location:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
+        println("locations = \(locations)")
     }
 
     
@@ -65,13 +71,17 @@ class ViewController: UIViewController {
          func viewTapped(sender : AnyObject) {
             totalTextField.resignFirstResponder()
         }
+        
+        location=CLLocationManager()
+        location.delegate = self
+        location.desiredAccuracy=kCLLocationAccuracyBest
+        location.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
 }
 
