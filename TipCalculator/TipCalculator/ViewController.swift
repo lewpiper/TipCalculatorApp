@@ -9,6 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var totalTextField : UITextField!
+    @IBOutlet var taxPctSlider : UISlider!
+    @IBOutlet var taxPctLabel : UILabel!
+    @IBOutlet var resultsTextView :UITextView!
                             
     override func viewDidLoad() {
         super.viewDidLoad()
